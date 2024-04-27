@@ -129,11 +129,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>USer</label>
+                                        <label>User</label>
                                         <select class="form-control select2" name="userid" style="width: 100%;">
                                             <option selected="selected">Pilih User</option>
                                             <?php foreach ($user as $kode1) : ?>
-                                                <option value="<?php echo $kode1->UserId ?>"><?php echo $kode1->NamaLengkap ?></option>
+                                                <?php if ($kode1->Role == 'peminjam') : ?>
+                                                    <option value="<?php echo $kode1->UserId ?>"><?php echo $kode1->NamaLengkap ?></option>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
