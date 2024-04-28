@@ -71,5 +71,8 @@ class Buku_model extends CI_Model{
             return false;
         }
     }
+
+    
+    
 }
 ?>

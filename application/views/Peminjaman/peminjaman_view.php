@@ -174,7 +174,15 @@
                         <div class="box">
                             <div class="box-header">
                                 <h3 class="box-title">Peminjaman</h3>
+                                <?php
+                                    $jumlahBukuDipinjam = count($peminjaman);
+                                    
+                                    if ($jumlahBukuDipinjam < 3) {
+                                ?>
                                 <a href="<?php echo base_url() ?>peminjaman/add" class="btn btn-primary btn-xs">tambah peminjaman</a>
+                                <?php
+                                    }
+                                ?>
                             </div>
 
                             <div class="box-body">
@@ -182,6 +190,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Judul Buku</th>
                                             <th>Tanggal Peminjaman</th>
                                             <th>Tanggal Pengembalian</th>
                                             <th>Status</th>
@@ -193,23 +202,30 @@
                                         <?php foreach ($peminjaman as $item) : ?>
                                             <tr>
                                                 <td><?php echo $no ?></td>
-                                                <td><?php echo $item->TanggalPeminjaman ?></td>
-                                                <td><?php echo $item->TanggalPengembalian ?></td>
-                                                <td><?php echo $item->StatusPeminjaman ?></td>
+                                                <?php foreach ($buku as $kode) : ?>
+                                                    <?php if ($kode->BukuId == $item->BukuId) : ?>
+                                                        <td><?php echo $kode->Judul ?></td>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                                <td><?php echo $item->TanggalPeminjaman; ?></td>
+                                                <td><?php echo $item->TanggalPengembalian; ?></td>
+                                                <td><?php echo $item->StatusPeminjaman; ?></td>
                                                 <td class="text-center">
                                                     <button class="btn btn-primary btn-xs" onclick="kembaliBuku()">
                                                         <i class="fa"> Kembalikan</i>
                                                     </button>
                                                 </td>
                                             </tr>
-                                            <?php $no++; ?>
+                                            <?php $no++; ?>;
                                         <?php endforeach; ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
+                                            <th>Judul Buku</th>
                                             <th>Tanggal Peminjaman</th>
                                             <th>TAngal Pengembalian</th>
+                                            <th>Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </tfoot>

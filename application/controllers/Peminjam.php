@@ -18,25 +18,41 @@ class Peminjam extends CI_Controller {
     }
 
     
-    public function submit() {
-        if ($this->input->post('submit')) {
-            $this->form_validation->set_rules('bukuid', 'Kode BukuId', 'trim|required');
-    
-            if ($this->form_validation->run() == true) {
-                if ($this->Peminjam_model->insert() == true) {
-                    $this->session->set_flashdata('success', 'Data berhasil disimpan');
-                    redirect('peminjam');
-                } else {
-                    $this->session->set_flashdata('error', 'Gagal menyimpan data');
-                    redirect('peminjam');
-                }
-                        
-            } else {
-                $this->session->set_flashdata('error', validation_errors());
-            }
-        }
-        redirect('peminjam');
+    public function submit()
+	{
+		if ($this->input->post('submit')) {
+			$this->form_validation->set_rules('bukuid', 'Kode BukuId', 'trim|required');
+			$this->form_validation->set_rules('userid', 'UserId', 'trim|required');
+
+
+			if ($this->form_validation->run() == true) {
+				if ($this->Peminjam_model->insert() == true) {
+					$bukuid = $this->input->post('bukuid');
+                	$this->reduceBookStock($bukuid);
+
+					$this->session->set_flashdata('announce', 'Berhasil menyimpan data');
+					redirect('peminjam');
+				} else {
+					$this->session->set_flashdata('announce', 'Gagal menyimpan data');
+					redirect('peminjam');
+				}
+			} else {
+				$this->session->set_flashdata('announce', validation_errors());
+				redirect('peminjam');
+			}
+		}
+	}
+
+	private function reduceBookStock($bukuid) {
+    // Mengurangi stok buku
+    $book = $this->Peminjam_model->cariBuku($bukuid)->row_array();
+    $currentStock = $book['Stok'];
+
+    if ($currentStock > 0) {
+        $newStock = $currentStock - 1;
+        $this->Peminjam_model->updateBookStock($bukuid, $newStock);
     }
+}
     
 
 

@@ -54,4 +54,14 @@ class Peminjam_model extends CI_Model {
 			return false;
 		}
 	}
+
+	public function updateBookStock($bukuid, $newStock) {
+        $this->db->where('BukuId', $bukuid);
+        $this->db->update('buku', array('Stok' => $newStock));
+    }
+
+	public function getPeminjamanInfo($id) {
+		$query = $this->db->where('PeminjamanId', $id)->get('peminjaman');
+		return $query->row_array();
+	}
 }

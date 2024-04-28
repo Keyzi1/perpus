@@ -43,6 +43,9 @@ class Peminjaman extends CI_Controller{
 
 			if ($this->form_validation->run() == true) {
 				if ($this->Peminjaman_model->insert() == true) {
+					$bukuid = $this->input->post('bukuid');
+                	$this->reduceBookStock($bukuid);
+
 					$this->session->set_flashdata('announce', 'Berhasil menyimpan data');
 					redirect('peminjaman');
 				} else {
@@ -56,6 +59,17 @@ class Peminjaman extends CI_Controller{
 		}
 	}
 
+	private function reduceBookStock($bukuid) {
+    // Mengurangi stok buku
+    $book = $this->Peminjaman_model->cariBuku($bukuid)->row_array();
+    $currentStock = $book['Stok'];
+
+    if ($currentStock > 0) {
+        $newStock = $currentStock - 1;
+        $this->Peminjaman_model->updateBookStock($bukuid, $newStock);
+    }
+}
+
 	public function add(){
 		$data = array(
 			'title' => 'peminjaman',
@@ -67,13 +81,27 @@ class Peminjaman extends CI_Controller{
 
 	public function kembalikan(){
 		$id = $this->input->get('rcgn');
-		if($this->Peminjaman_model->kembali($id) == true){
-			$this->session->set_flashdata('announce', 'Berhasil mengembalikan data');
-			redirect('peminjaman');
-		}else{
-			$this->session->set_flashdata('announce', 'Berhasil Mengembalikan data');
-			redirect('peminjaman');
+		$peminjaman_info = $this->Peminjaman_model->getPeminjamanInfo($id);
+		
+		if($peminjaman_info) {
+			// Mendapatkan informasi buku yang dipinjam
+			$bukuid = $peminjaman_info['BukuId'];
+			
+			// Menandai peminjaman sebagai sudah dikembalikan
+			if($this->Peminjaman_model->kembali($id)) {
+				// Menambahkan kembali stok buku yang dikembalikan
+				$this->Peminjaman_model->increaseBookStock($bukuid);
+				
+				$this->session->set_flashdata('announce', 'Berhasil mengembalikan data');
+			} else {
+				$this->session->set_flashdata('announce', 'Gagal mengembalikan data');
+			}
+		} else {
+			$this->session->set_flashdata('announce', 'Data peminjaman tidak ditemukan');
 		}
+		
+		redirect('peminjaman');
 	}
+	
 }
 ?>

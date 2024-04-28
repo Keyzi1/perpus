@@ -117,12 +117,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <form action="<?php echo base_url() ?>peminjam/submit" method="post">
-                                    <input type="hidden" name="userid" value="<?php echo $this->session->userdata('userid') ?>">
-                                    <div class="form-group">
+                                <div class="form-group">
                                         <label>Buku</label>
                                         <select class="form-control select2" name="bukuid" style="width: 100%;">
                                             <option selected="selected">Pilih Buku</option>
-                                            <?php foreach ($buku as $kode) : ?>
+                                            <?php foreach ($buku as $kode) :
+                                                // Periksa jika stok buku kurang dari 1
+                                                if ($kode->Stok < 1) {
+                                                    continue; // Lewati buku dengan stok kurang dari 1
+                                                }
+                                            ?>
                                                 <option value="<?php echo $kode->BukuId ?>"><?php echo $kode->Judul ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -133,9 +137,24 @@
                                         <select class="form-control select2" name="userid" style="width: 100%;">
                                             <option selected="selected">Pilih User</option>
                                             <?php foreach ($user as $kode1) : ?>
-                                                <?php if ($kode1->Role == 'peminjam') : ?>
+                                                <?php
+                                                // Hitung jumlah buku yang sudah dipinjam oleh pengguna
+                                                $jumlahBukuDipinjam = 0; // Inisialisasi jumlah buku yang dipinjam
+                                                
+                                                // Loop untuk menghitung jumlah buku yang sudah dipinjam oleh pengguna
+                                                foreach ($peminjaman as $item) {
+                                                    if ($item->UserId == $kode1->UserId) {
+                                                        $jumlahBukuDipinjam++;
+                                                    }
+                                                }
+                                                
+                                                // Jika jumlah buku yang sudah dipinjam oleh pengguna kurang dari 3, tampilkan pengguna dalam daftar
+                                                if ($jumlahBukuDipinjam < 3 && $kode1->Role == 'peminjam') {
+                                                ?>
                                                     <option value="<?php echo $kode1->UserId ?>"><?php echo $kode1->NamaLengkap ?></option>
-                                                <?php endif; ?>
+                                                <?php
+                                                }
+                                                ?>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>

@@ -130,7 +130,12 @@
                                         <label>Buku</label>
                                         <select class="form-control select2" name="bukuid" style="width: 100%;">
                                             <option selected="selected">Pilih Buku</option>
-                                            <?php foreach ($buku as $kode) : ?>
+                                            <?php foreach ($buku as $kode) :
+                                                // Periksa jika stok buku kurang dari 1
+                                                if ($kode->Stok < 1) {
+                                                    continue; // Lewati buku dengan stok kurang dari 1
+                                                }
+                                            ?>
                                                 <option value="<?php echo $kode->BukuId ?>"><?php echo $kode->Judul ?></option>
                                             <?php endforeach; ?>
                                         </select>
