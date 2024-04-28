@@ -134,6 +134,10 @@
                                         <label>Tahun Terbit</label>
                                         <input type="number" name="tahun_terbit" class="form-control">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Stok</label>
+                                        <input type="number" name="stok" class="form-control" max="18">
+                                    </div>
 
                                     <div class="form-group">
                                         <input type="submit" name="submit" id="">

@@ -138,6 +138,11 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Tahun Terbit</label>
+                                        <input type="number" name="tahun_terbit" value="<?php echo $detail->Stok ?>" class="form-control" max="18">
+                                    </div>
+
+                                    <div class="form-group">
                                         <input type="submit" class="btn btn-xs btn-success" name="submit" id="">
                                         <a href="<?php echo base_url()?>buku" class="btn btn-xs btn-primary">kembali</a>
                                     </div>

@@ -34,6 +34,7 @@ class Buku extends CI_Controller
             $this->form_validation->set_rules('penulis', 'Penulis', 'trim|required');
             $this->form_validation->set_rules('penerbit', 'Penerbit', 'trim|required');
             $this->form_validation->set_rules('tahun_terbit', 'TahunTerbit', 'trim|required|numeric');
+            $this->form_validation->set_rules('stok', 'Stok', 'trim|required|integer');
 
             if ($this->form_validation->run() == true) {
                 if ($this->Buku_model->insert() == true) {
@@ -57,6 +58,7 @@ class Buku extends CI_Controller
             $this->form_validation->set_rules('penulis', 'Penulis', 'trim|required');
             $this->form_validation->set_rules('penerbit', 'Penerbit', 'trim|required');
             $this->form_validation->set_rules('tahun_terbit', 'TahunTerbit', 'trim|required|numeric');
+            $this->form_validation->set_rules('stok', 'Stok', 'trim|required|integer');
 
             if ($this->form_validation->run() == true) {
                 if ($this->Buku_model->update($this->input->post('id')) == true) {

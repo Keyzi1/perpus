@@ -6,7 +6,8 @@ class Buku_model extends CI_Model{
             'Judul' => $this->input->post('judul'),
             'Penulis' => $this->input->post('penulis'),
             'Penerbit' => $this->input->post('penerbit'),
-            'TahunTerbit' => $this->input->post('tahun_terbit')
+            'TahunTerbit' => $this->input->post('tahun_terbit'),
+            'Stok' => $this->input->post('stok')
         );
 
         $this->db->insert('buku', $data);
@@ -23,7 +24,8 @@ class Buku_model extends CI_Model{
             'Judul' => $this->input->post('judul'),
             'Penulis' => $this->input->post('penulis'),
             'Penerbit' => $this->input->post('penerbit'),
-            'TahunTerbit' => $this->input->post('tahun_terbit')
+            'TahunTerbit' => $this->input->post('tahun_terbit'),
+            'Stok' => $this->input->post('stok')
         );
 
         $this->db->where('BukuId', $id)->update('buku', $data);

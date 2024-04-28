@@ -35,7 +35,7 @@ class Peminjaman_model extends CI_Model{
 			'UserId' => $this->input->post('userid'),
 			'BukuId' => $this->input->post('bukuid'),
 			'TanggalPeminjaman' => date('Y/m/d'),
-			'TanggalPengembalian' => $this->input->post('tanggal_pengembalian'),
+			'TanggalPengembalian' => date('Y/m/d', strtotime('+4 days')),
 			'StatusPeminjaman' => "dipinjam" //default status
 		);
 

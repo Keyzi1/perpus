@@ -21,8 +21,6 @@ class Peminjam extends CI_Controller {
     public function submit() {
         if ($this->input->post('submit')) {
             $this->form_validation->set_rules('bukuid', 'Kode BukuId', 'trim|required');
-            $this->form_validation->set_rules('userid', 'Kode UserId', 'trim|required');
-            $this->form_validation->set_rules('tanggal_pengembalian', 'TanggalPengembalian', 'trim|required');
     
             if ($this->form_validation->run() == true) {
                 if ($this->Peminjam_model->insert() == true) {

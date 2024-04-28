@@ -122,6 +122,7 @@
                                             <th>Penulis</th>
                                             <th>Penerbit</th>
                                             <th>Tahun Terbit</th>
+                                            <th>Stok</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -134,6 +135,7 @@
                                                 <td><?php echo $item->Penulis ?></td>
                                                 <td><?php echo $item->Penerbit ?></td>
                                                 <td><?php echo $item->TahunTerbit ?></td>
+                                                <td><?php echo $item->Stok ?></td>
                                                 <td class="text-center">
                                                     <a href="<?php echo base_url() ?>buku/edit?idtf=<?php echo $item->BukuId ?>" class="btn btn-primary btn-xs">Edit Buku</a>
                                                     <button class="btn btn-danger btn-xs" onclick="sweets()">
@@ -151,6 +153,7 @@
                                             <th>Penulis</th>
                                             <th>Penerbit</th>
                                             <th>Tahun Terbit</th>
+                                            <th>Stok</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </tfoot>

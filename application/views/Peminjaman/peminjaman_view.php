@@ -27,9 +27,11 @@
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="<?php echo base_url() ?>dashboard" class="logo">
+            <a href="index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>ip</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg">Perpustakaan</span>
+                <span class="logo-lg"><b>Parsat</b>Perpus</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -53,6 +55,15 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Alexander Pierce</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
 
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
@@ -167,7 +178,7 @@
                         <div class="box">
                             <div class="box-header">
                                 <h3 class="box-title">Peminjaman</h3>
-                                <a href="<?php echo base_url() ?>peminjaman/add" class="btn btn-success btn-xs">tambah peminjaman</a>
+                                <a href="<?php echo base_url() ?>peminjaman/add" class="btn btn-primary btn-xs">tambah peminjaman</a>
                             </div>
 
                             <div class="box-body">
@@ -175,7 +186,6 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Judul Buku</th>
                                             <th>Tanggal Peminjaman</th>
                                             <th>Tanggal Pengembalian</th>
                                             <th>Status</th>
@@ -187,9 +197,6 @@
                                         <?php foreach ($peminjaman as $item) : ?>
                                             <tr>
                                                 <td><?php echo $no ?></td>
-                                                <?php foreach ($buku as $kode) : ?>
-                                                <td <?php echo $kode->BukuId ?>><?php echo $kode->Judul ?></td>
-                                                <?php endforeach; ?>
                                                 <td><?php echo $item->TanggalPeminjaman ?></td>
                                                 <td><?php echo $item->TanggalPengembalian ?></td>
                                                 <td><?php echo $item->StatusPeminjaman ?></td>
@@ -205,7 +212,6 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Judul Buku</th>
                                             <th>Tanggal Peminjaman</th>
                                             <th>TAngal Pengembalian</th>
                                             <th class="text-center">Action</th>
@@ -236,7 +242,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.13-pre
         </div>
-        <strong>Copyright &copy; 2024.</strong>
+        <strong>Copyright &copy; 2024 <a>Saip</a>.</strong>
     </footer>
     </div>
     <!-- jQuery 3 -->
