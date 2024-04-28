@@ -151,11 +151,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Tanggal Pengembalian</label>
-                                        <input type="text" name="tanggal_pengembalian" class="form-control" value="<?php echo date('Y/m/d', strtotime('+4 days')) ?>" disabled>
-                                    </div>
-
-                                    <div class="form-group">
                                         <input type="submit" name="submit" id="">
                                     </div>
 
