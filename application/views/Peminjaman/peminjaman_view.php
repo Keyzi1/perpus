@@ -179,7 +179,7 @@
                                     
                                     if ($jumlahBukuDipinjam < 3) {
                                 ?>
-                                <a href="<?php echo base_url() ?>peminjaman/add" class="btn btn-primary btn-xs">tambah peminjaman</a>
+                                <a href="<?php echo base_url() ?>peminjaman/add" class="btn btn-success btn-xs">tambah peminjaman</a>
                                 <?php
                                     }
                                 ?>
@@ -207,16 +207,16 @@
                                                         <td><?php echo $kode->Judul ?></td>
                                                     <?php endif; ?>
                                                 <?php endforeach; ?>
-                                                <td><?php echo $item->TanggalPeminjaman; ?></td>
-                                                <td><?php echo $item->TanggalPengembalian; ?></td>
-                                                <td><?php echo $item->StatusPeminjaman; ?></td>
+                                                <td><?php echo $item->TanggalPeminjaman ?></td>
+                                                <td><?php echo $item->TanggalPengembalian ?></td>
+                                                <td><?php echo $item->StatusPeminjaman ?></td>
                                                 <td class="text-center">
                                                     <button class="btn btn-primary btn-xs" onclick="kembaliBuku()">
                                                         <i class="fa"> Kembalikan</i>
                                                     </button>
                                                 </td>
                                             </tr>
-                                            <?php $no++; ?>;
+                                            <?php $no++; ?>
                                         <?php endforeach; ?>
                                     </tbody>
                                     <tfoot>

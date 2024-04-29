@@ -167,7 +167,6 @@
                         <div class="box">
                             <div class="box-header">
                                 <h3 class="box-title">Data Peminjam</h3>
-                                <a href="<?php echo base_url() ?>peminjam/add" class="btn btn-success btn-xs">tambah peminjaman</a>
                             </div>
 
                             <div class="box-body">

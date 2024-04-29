@@ -63,14 +63,14 @@ class Buku extends CI_Controller
             if ($this->form_validation->run() == true) {
                 if ($this->Buku_model->update($this->input->post('id')) == true) {
                     $this->session->set_flashdata('announce', 'Berhasil menyimpan data');
-                    redirect('Buku/edit?idtf=' . $this->input->post('id'));
+                    redirect('Buku');
                 } else {
                     $this->session->set_flashdata('announce', 'Gagal menyimpan data');
-                    redirect('Buku/edit?idtf=' . $this->input->post('id'));
+                    redirect('Buku');
                 }
             } else {
                 $this->session->set_flashdata('announce', validation_errors());
-                redirect('Buku/edit?idtf=' . $this->input->post('id'));
+                redirect('Buku');
             }
         }
     }

@@ -138,14 +138,13 @@
 
                                     <div class="form-group">
                                         <label>Alamat</label>
-                                        <input type="text" name="alamat" class="form-control"  value="bandung" disabled>
+                                        <input type="text" name="alamat" class="form-control">
                                     </div>
 
                                     <?php if ($this->session->userdata('role') == 'administrator') : ?>
                                         <div class="form-group">
                                         <label>Role</label>
                                         <select name="role" class="form-control" id="">
-                                        
                                             <option value="administrator">administrator</option>
                                             <option value="petugas">petugas</option>
                                             <option value="peminjam">peminjam</option>

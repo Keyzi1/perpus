@@ -138,8 +138,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Tahun Terbit</label>
-                                        <input type="number" name="tahun_terbit" value="<?php echo $detail->Stok ?>" class="form-control" max="18">
+                                        <label>Stok</label>
+                                        <input type="number" name="stok" value="<?php echo $detail->Stok ?>" class="form-control" max="12">
                                     </div>
 
                                     <div class="form-group">

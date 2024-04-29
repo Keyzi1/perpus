@@ -132,29 +132,18 @@
                                         </select>
                                     </div>
 
+                                    
                                     <div class="form-group">
                                         <label>User</label>
                                         <select class="form-control select2" name="userid" style="width: 100%;">
                                             <option selected="selected">Pilih User</option>
                                             <?php foreach ($user as $kode1) : ?>
                                                 <?php
-                                                // Hitung jumlah buku yang sudah dipinjam oleh pengguna
-                                                $jumlahBukuDipinjam = 0; // Inisialisasi jumlah buku yang dipinjam
-                                                
-                                                // Loop untuk menghitung jumlah buku yang sudah dipinjam oleh pengguna
-                                                foreach ($peminjaman as $item) {
-                                                    if ($item->UserId == $kode1->UserId) {
-                                                        $jumlahBukuDipinjam++;
-                                                    }
-                                                }
-                                                
-                                                // Jika jumlah buku yang sudah dipinjam oleh pengguna kurang dari 3, tampilkan pengguna dalam daftar
-                                                if ($jumlahBukuDipinjam < 3 && $kode1->Role == 'peminjam') {
+                                                    $jumlahBukuDipinjam = count($peminjaman);
+                                                    if ($jumlahBukuDipinjam < 3 && $kode1->Role == 'peminjam') :
                                                 ?>
                                                     <option value="<?php echo $kode1->UserId ?>"><?php echo $kode1->NamaLengkap ?></option>
-                                                <?php
-                                                }
-                                                ?>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
