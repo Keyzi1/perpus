@@ -1,4 +1,25 @@
 ###################
+User Login
+###################
+*******************
+Admin
+*******************
+- Username : admin
+- Password : 123
+
+*******************
+Petugas
+*******************
+- Username : petugas
+- Password : 123
+
+*******************
+User
+*******************
+- Username : user
+- Password : 123
+
+###################
 What is CodeIgniter
 ###################
 
